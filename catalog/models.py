@@ -18,10 +18,17 @@ class Genre(models.Model):
 
 class Actor(models.Model):
     """
-    Model representing an Actor (e.g. Tom Cruise, Daniel Radcliff).
+    Model representing an Actor (e.g. Tom Cruise, Daniel Radcliffe).
     """
     name = models.CharField(max_length=200, help_text="Enter a movie Actors Name (e.g. Tom Cruise, Daniel Radcliff).")
     last_name = models.CharField(max_length=100)
+    bio = models.TextField(max_length=1000, default='No Bio Information Set', help_text="Enter a brief Character Bio or Resume")
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular director instance.
+        """
+        return reverse('actor-detail', args=[str(self.id)])
 
     def __str__(self):
         """
@@ -78,7 +85,7 @@ class Movie(models.Model):
 
 class Director(models.Model):
     """
-    Model representing an author.
+    Model representing an director.
     """
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -87,9 +94,9 @@ class Director(models.Model):
     
     def get_absolute_url(self):
         """
-        Returns the url to access a particular author instance.
+        Returns the url to access a particular director instance.
         """
-        return reverse('author-detail', args=[str(self.id)])
+        return reverse('director-detail', args=[str(self.id)])
     
 
     def __str__(self):

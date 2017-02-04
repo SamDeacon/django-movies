@@ -1,5 +1,5 @@
 {% extends "base_generic.html" %}
-
+ {% block title %}<title>App Library</title>{% endblock %}
 {% block content %}
 <h1>Local Library Home</h1>
 
@@ -13,6 +13,15 @@
     <li><strong>Actors:</strong> {{ num_actors }}</li>
     <li><strong>Genres:</strong> {{ num_genres }}</li>
     <li><strong>Directors:</strong> {{ num_directors }}</li>
+    <li><strong>Number of Daniels:</strong> {{ num_daniel|length }} Dans</li>
   </ul>
+  <h2>Dynamic Daniels</h2>
+
+  <ul>
+{% for daniel in num_daniel %}
+<li>{{ daniel }}</li>
+{% endfor %}
+</ul>
+  
 
 {% endblock %}
